@@ -44,7 +44,6 @@ def decode_XKCD_tuple(xkcd_values : tuple[str, ...], k : int) -> list[int]:
     numeri = []
     while (i < len(xkcd_values)):
       numeri.append(decode_value(xkcd_values[i]))
-      print(numeri[i])
       i+=1
     numeri.sort()
     numeri.reverse()
