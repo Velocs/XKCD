@@ -40,9 +40,9 @@ def decode_XKCD_tuple(xkcd_values : tuple[str, ...], k : int) -> list[int]:
     Returns
     list[int]                   i k massimi valori ottenuti in ordine decrescente
     '''
-    i = 0
+    i = 1
     numeri = []
-    while (i < len(xkcd_values) - 1):
+    while (i <= len(xkcd_values)):
       numeri.append(decode_value(xkcd_values[i]))
       i+=1
     numeri.sort()
@@ -110,10 +110,10 @@ def list_of_weights_to_number(weigths : list[int] ) -> int:
     result = weigths[i]
     while (i > 0):
       if weigths[i-1] < weigths[i]:
-        result = (result - weigths[i-1])
+        result -= weigths[i-1]
         i -= 1
       else:
-        result = result + weigths[i - 1]
+        result += weigths[i - 1]
         i -= 1
     return result
 
