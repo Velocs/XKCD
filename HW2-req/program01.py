@@ -42,7 +42,7 @@ def decode_XKCD_tuple(xkcd_values : tuple[str, ...], k : int) -> list[int]:
     '''
     i = 0
     numeri = []
-    while (i < len(xkcd_values)):
+    while (i < len(xkcd_values) - 1):
       numeri.append(decode_value(xkcd_values[i]))
       i+=1
     numeri.sort()
@@ -106,37 +106,15 @@ def list_of_weights_to_number(weigths : list[int] ) -> int:
     Esempio: [100, 100, 100, 10, 100, 5, 1, 1,] -> 397
     [1, 10, 100, 1000]
     '''
-    i = 1
-    k = 0
-    c = 1
-    result = 0
-    temp = 0
-    while (i < len(weigths)):
-      if not (weigths[i -1] < weigths[i]):
-        result = result + weigths[i-1]
-      elif(weigths[i -1] < weigths[i]):
-        c = i
-        while (weigths[i-1] < weigths[i] and i < len(weigths) - 1):
-          i += 1
-        temp = weigths[i-1]
-        k = i -1
-        while (k >= c):
-          result = result + (temp - weigths[k - 1])
-          print(result)
-          k-=1
-      i += 1
-    result += weigths[i-1]
-    return result
-
-      # else:
-      #   result = result + weigths[i]
-      # i += 1
-      # if i < len(weigths) - 1 and weigths[i] < weigths[i+1]:
-      #   result = result + (weigths[i+1] - weigths[i])
-      #   i += 1
-      # else:
-      #   result = result + weigths[i]
-      # i += 1
+    i = len(weigths) - 1
+    result = weigths[i]
+    while (i > 0):
+      if weigths[i-1] < weigths[i]:
+        result = (result - weigths[i-1])
+        i -= 1
+      else:
+        result = result + weigths[i - 1]
+        i -= 1
     return result
 
     # INSERISCI QUI IL TUO CODICE
