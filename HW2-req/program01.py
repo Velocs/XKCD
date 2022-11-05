@@ -40,14 +40,15 @@ def decode_XKCD_tuple(xkcd_values : tuple[str, ...], k : int) -> list[int]:
     Returns
     list[int]                   i k massimi valori ottenuti in ordine decrescente
     '''
-    i = 1
+    i = 0
     numeri = []
-    while (i <= len(xkcd_values)):
+    while (i < len(xkcd_values)):
       numeri.append(decode_value(xkcd_values[i]))
+      print(numeri[i])
       i+=1
     numeri.sort()
     numeri.reverse()
-    return numeri
+    return numeri[0:k]
     # INSERISCI QUI IL TUO CODICE
     pass
 
@@ -130,4 +131,4 @@ if __name__ == '__main__':
     # print(xkcd_to_list_of_weights("10010010010100511"))
     # xkcd_to_list_of_weights("10010010010100511")
     # print(decode_XKCD_tuple(xkcd, 1))
-    print(decode_value("1101001000"))
+    print(decode_XKCD_tuple(xkcd, 6))
